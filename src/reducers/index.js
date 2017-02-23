@@ -63,23 +63,3 @@ export const repositoryReducer = (state=initialRepositoryState, action) => {
 
   return state;
 };
-
-
-export const fetchDescription = repository => dispatch => {
-    const url = `https://api.github.com/repos/${repository}`;
-    return fetch(url).then(response => {
-        if (!response.ok) {
-            const error = new Error(response.statusText)
-            error.response = response
-            throw error;
-        }
-        return response;
-    })
-    .then(response => response.json())
-    .then(data =>
-        dispatch(fetchDescriptionSuccess(repository, data.description))
-    )
-    .catch(error =>
-        dispatch(fetchDescriptionError(repository, error))
-    );
-};

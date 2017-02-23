@@ -9,5 +9,5 @@ import RepositoryList from './components/repository-list';
         <Provider store={store}>
             <RepositoryList />
         </Provider>,
-        document.getElementById('app')
+        document.getElementById('root')
     );
